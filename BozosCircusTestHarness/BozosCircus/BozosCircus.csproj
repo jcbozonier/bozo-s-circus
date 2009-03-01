@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>df7f3ec5-3bcb-48b9-8186-039c43c6bc74</ProjectGuid>
+    <ProjectGuid>{4AD2CD1F-9CA5-46E8-A938-80020995073B}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BozosCircus</RootNamespace>
