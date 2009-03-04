@@ -1,8 +1,8 @@
 ﻿<Window x:Class="BozosCircusTestHarness.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Window1" Height="300" Width="300">
+    Title="Window1" Height="300" Width="427">
     <Grid>
-        
+        <Button Height="23" Margin="11,12,198,0" Name="button1" VerticalAlignment="Top" Click="button1_Click">Test Custom Message Box</Button>
     </Grid>
 </Window>

@@ -50,6 +50,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="MessageBoxDeluxe\MessageBoxDeluxe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControl1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -60,6 +64,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MessageBoxDeluxe\MessageBoxDeluxe.xaml.cs">
+      <DependentUpon>MessageBoxDeluxe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxDeluxe\LambdaCommand.cs" />
+    <Compile Include="MessageBoxDeluxe\MessageBoxChoice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
