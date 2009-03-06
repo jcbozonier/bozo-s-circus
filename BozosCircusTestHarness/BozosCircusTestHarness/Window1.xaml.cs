@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BozosCircus.MessageBoxDeluxe;
+using BozosCircus.SmartStart;
 
 namespace BozosCircusTestHarness
 {
@@ -23,7 +24,69 @@ namespace BozosCircusTestHarness
         public Window1()
         {
             InitializeComponent();
+            PreviewKeyDown += Window1_PreviewKeyDown;
+            PreviewKeyUp += Window1_PreviewKeyUp;
+
+            _Launcher = new SmartStart(
+                new ActionMapper(
+                    new[]
+                        {
+                            new Verb(
+                                "select",
+                                new[]
+                                    {
+                                        new Noun
+                                            {
+                                                Name = "table",
+                                                Do = () => MessageBox.Show("select table")
+                                            },
+                                        new Noun
+                                            {
+                                                Name = "cells",
+                                                Do = () => MessageBox.Show("select cells")
+                                            }
+                                    }
+                                ),
+                            new Verb(
+                                "export",
+                                new[]
+                                    {
+                                        new Noun()
+                                            {
+                                                Name = "table",
+                                                Do = () => MessageBox.Show("export table")
+                                            }
+                                    }),
+                        }
+                    )
+                );
         }
+
+        void Window1_PreviewKeyUp(object sender, KeyEventArgs e)
+        {
+            _PreviousKey = _CurrentKey;
+            _CurrentKey = Key.None;
+        }
+
+        private SmartStart _Launcher;
+
+        private Key _PreviousKey;
+        private Key _CurrentKey;
+        void Window1_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            _PreviousKey = _CurrentKey;
+            _CurrentKey = e.Key;
+
+            if ((_PreviousKey == Key.LeftCtrl && _CurrentKey == Key.Space) ||
+                (_PreviousKey == Key.Space && _CurrentKey == Key.LeftCtrl))
+            {
+                _PreviousKey = Key.None;
+                _CurrentKey = Key.None;
+                
+                _Launcher.Show();
+                _Launcher.Focus();
+            }
+    }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {

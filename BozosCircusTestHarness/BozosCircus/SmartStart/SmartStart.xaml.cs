@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BozosCircus.SmartStart;
 
 namespace BozosCircusTestHarness
 {
@@ -18,9 +19,17 @@ namespace BozosCircusTestHarness
     /// </summary>
     public partial class SmartStart : Window
     {
-        public SmartStart()
+
+        public SmartStart(ActionMapper actions)
         {
             InitializeComponent();
+
+            PreviewKeyDown += new KeyEventHandler(SmartStart_PreviewKeyDown);
+        }
+
+        void SmartStart_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key == Key.Return) this.Hide();
         }
     }
 }
